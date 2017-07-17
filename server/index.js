@@ -1,6 +1,7 @@
 require('./helpers/consoleLogHelper.js');
 
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
@@ -12,14 +13,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/dist', express.static(`${__dirname}/../dist`));
+app.use('/dist', express.static(`${__dirname}/../client/dist`));
 
 app.get('/', (req, res) => {
-  res.end('Test Weather Page');
+  console.log('GET /', 'from', req.connection.remoteAddress);
+  res.sendFile(path.resolve(`${__dirname}/../client/src/index.html`));
 });
 
 app.listen(process.env.PORT || 8080);
 
-console.info(
-  `Listening on ${process.env.ROOT_URL || 'http://localhost'}:${process.env.PORT || 8080}`,
-);
+console.info(`Listening on ${process.env.ROOT_URL || 'http://localhost'}:${process.env.PORT || 8080}`);
