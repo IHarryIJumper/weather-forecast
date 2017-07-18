@@ -11,52 +11,58 @@ class WeatherMainInfo extends React.PureComponent {
 
     switch (icon) {
       case '01d':
-        returnValue = <i className="wi wi-day-sunny" />;
+        returnValue = <i className="wi wi-day-sunny weather-card__clear-day" />;
         break;
       case '01n':
-        returnValue = <i className="wi wi-night-clear" />;
+        returnValue = <i className="wi wi-night-clear weather-card__clear-night" />;
         break;
       case '02d':
-        returnValue = <i className="wi wi-day-cloudy" />;
+        returnValue = <i className="wi wi-day-cloudy weather-card__cloudy-day" />;
         break;
       case '02n':
-        returnValue = <i className="wi wi-night-alt-cloudy" />;
+        returnValue = <i className="wi wi-night-alt-cloudy weather-card__cloudy-night" />;
         break;
       case '03d':
-        returnValue = <i className="wi wi-cloud" />;
+        returnValue = <i className="wi wi-cloud weather-card__cloud" />;
         break;
       case '03n':
-        returnValue = <i className="wi wi-cloud" />;
+        returnValue = <i className="wi wi-cloud weather-card__cloud" />;
         break;
       case '04d':
-        returnValue = <i className="wi wi-cloudy" />;
+        returnValue = <i className="wi wi-cloudy weather-card__cloudy" />;
         break;
       case '04n':
-        returnValue = <i className="wi wi-cloudy" />;
+        returnValue = <i className="wi wi-cloudy weather-card__cloudy" />;
         break;
       case '09d':
-        returnValue = <i className="wi wi-rain" />;
+        returnValue = <i className="wi wi-rain weather-card__rain" />;
         break;
       case '09n':
-        returnValue = <i className="wi wi-rain" />;
+        returnValue = <i className="wi wi-rain weather-card__rain" />;
         break;
       case '10d':
-        returnValue = <i className="wi wi-day-rain" />;
+        returnValue = <i className="wi wi-day-rain weather-card__rain-day" />;
         break;
       case '10n':
-        returnValue = <i className="wi wi-night-alt-rain" />;
+        returnValue = <i className="wi wi-night-alt-rain weather-card__rain-night" />;
+        break;
+      case '11d':
+        returnValue = <i className="wi wi-day-lightning weather-card__thunder-day" />;
+        break;
+      case '11n':
+        returnValue = <i className="wi wi-night-alt-lightning weather-card__thunder-night" />;
         break;
       case '13d':
-        returnValue = <i className="wi wi-snowflake-cold" />;
+        returnValue = <i className="wi wi-snowflake-cold weather-card__snow" />;
         break;
       case '13n':
-        returnValue = <i className="wi wi-snowflake-cold" />;
+        returnValue = <i className="wi wi-snowflake-cold weather-card__snow" />;
         break;
       case '50d':
-        returnValue = <i className="wi wi-fog" />;
+        returnValue = <i className="wi wi-fog weather-card__mist" />;
         break;
       case '50n':
-        returnValue = <i className="wi wi-fog" />;
+        returnValue = <i className="wi wi-fog weather-card__mist" />;
         break;
       default:
         returnValue = <i className="wi wi-alien" />;
@@ -68,12 +74,19 @@ class WeatherMainInfo extends React.PureComponent {
   render() {
     return (
       <div className="weather-card__weather-main-info">
+        <div className="weather-card__temperature">
+          <h2 className="weather-card__temperature-text">
+            {Math.round(this.props.temp)} °C
+          </h2>
+        </div>
         <div className="weather-card__weather-icon">
           {this.renderWeatherIcon()}
         </div>
-        <h2 className="weather-card__temperature">
-          {this.props.temp} °C
-        </h2>
+        <div className="weather-card__description">
+          <span className="weather-card__description-text">
+            {this.props.description}
+          </span>
+        </div>
       </div>
     );
   }
@@ -81,7 +94,8 @@ class WeatherMainInfo extends React.PureComponent {
 
 WeatherMainInfo.propTypes = {
   icon: PropTypes.string.isRequired,
-  temp: PropTypes.string.isRequired,
+  temp: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

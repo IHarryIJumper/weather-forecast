@@ -1,0 +1,67 @@
+.weather-card__weather-additional-info {
+    position: relative;
+    width: 100%;
+    font-size: 0;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.weather-card__temperature-min-max,
+.weather-card__additional-info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.weather-card__additional-info {
+    width: 30%;
+}
+
+.weather-card__temperature-min-max {
+    width: 40%;
+}
+
+.weather-card__temperature-min-max {
+    font-size: 20px;
+    line-height: 57px;
+    margin: 0; // width: 50%;
+    .weather-card__temperature-min-max-text {
+        margin: 0px auto;
+        display: block;
+    }
+}
+
+.weather-card__pressure,
+.weather-card__humidity,
+.weather-card__visibility,
+.weather-card__clouds,
+.weather-card__wind {
+    span {
+        font-size: 14px;
+    }
+    .weather-card__pressure-value,
+    .weather-card__humidity-value,
+    .weather-card__visibility-value,
+    .weather-card__clouds-value,
+    .weather-card__wind-value {
+        font-weight: bold;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    /* For mobile phones: */
+    .weather-card__temperature-min-max {
+		font-size: 15px;
+		line-height: 42px;
+    }
+    .weather-card__pressure,
+    .weather-card__humidity,
+    .weather-card__visibility,
+    .weather-card__clouds,
+    .weather-card__wind {
+        span {
+            font-size: 10px;
+        }
+    }
+}

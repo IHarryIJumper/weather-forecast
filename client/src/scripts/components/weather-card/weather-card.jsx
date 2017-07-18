@@ -8,9 +8,13 @@ import './weather-card.less';
 
 const WeatherCard = () =>
   (<div className="weather-card weather-card_shadow">
-    <CityInfo />
-    <WeatherMainInfo />
-    {/* <WeatherAdditionalInfo /> */}
+    <div className="weather-card__title">
+      <CityInfo />
+    </div>
+    <div className="weather-card__content">
+      <WeatherMainInfo />
+      <WeatherAdditionalInfo />
+    </div>
   </div>);
 
 export default WeatherCard;

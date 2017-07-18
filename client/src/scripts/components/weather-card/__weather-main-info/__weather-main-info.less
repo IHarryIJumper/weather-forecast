@@ -1,23 +1,105 @@
 .weather-card__weather-main-info {
-  position: relative;
-  width: 100%;
-  font-size: 0;
+    position: relative;
+    width: 100%;
+    font-size: 0;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .weather-card__weather-icon,
+.weather-card__description,
 .weather-card__temperature {
-  display: inline-block;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.weather-card__weather-icon,
+.weather-card__description {
+    width: 30%;
+}
+
+.weather-card__temperature {
+    width: 40%
 }
 
 .weather-card__weather-icon {
-  font-size: 50px;
-  line-height: 50px;
-  width: 50%;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.weather-card__description {
+    font-size: 16px; // line-height: 50px;
+    margin: 0;
+    .weather-card__description-text {
+        margin: 0 auto;
+        display: block;
+    }
 }
 
 .weather-card__temperature {
-  font-size: 40px;
-  line-height: 40px;
-  margin: 0;
-  width: 50%;
+    font-size: 40px;
+    line-height: 50px;
+    margin: 0; // width: 50%;
+    .weather-card__temperature-text {
+        margin: 0px auto;
+        display: block;
+    }
+}
+
+.weather-card__cloud {
+    color: #607d8b;
+}
+
+.weather-card__cloudy {
+    color: #37474f ;
+}
+
+.weather-card__rain {
+    color: #0d47a1 ;
+}
+
+.weather-card__snow {
+    color: #64b5f6 ;
+}
+
+.weather-card__clear-night {
+    color: #424242 ;
+}
+
+.weather-card__clear-day {
+    color: #ff6d00 ;
+}
+
+.weather-card__thunder-night {
+    color: #1a237e ;
+}
+
+.weather-card__thunder-day {
+    color: #0d47a1 ;
+}
+
+.weather-card__rain-night,
+.weather-card__cloudy-night {
+    color: #0d47a1 ;
+}
+
+.weather-card__rain-day,
+.weather-card__cloudy-day {
+    color: #1976d2 ;
+}
+
+.weather-card__mist {
+    color: #757575 ;
+}
+
+@media only screen and (max-width: 640px) {
+    /* For mobile phones: */
+    .weather-card__temperature {
+        font-size: 25px;
+    }
+    .weather-card__description {
+        font-size: 14px;
+    }
 }
