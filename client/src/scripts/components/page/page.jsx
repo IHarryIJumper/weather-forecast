@@ -1,36 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Cookies from 'js-cookie';
 
 import './page.less';
 
-import SearchBar from '../searchBar/searchBar';
+import forecastActions from '../../actions/forecastActions';
 
-const renderInput = () => <SearchBar key="city-search-bar" />;
+import SearchBar from '../search-bar/search-bar';
+import WeatherCard from '../weather-card/weather-card';
+
+import Request from '../../helpers/request';
 
 class Page extends React.PureComponent {
-  renderContent() {
-    const { cityId } = this.props;
-    const renderArray = [renderInput()];
+  componentDidMount() {
+    const weatherData = Cookies.get('weatherForecast');
 
-    if (cityId !== (null || undefined)) {
-      renderArray.push(<div className="card" key="weather-card" />);
+    if (weatherData !== undefined) {
+      try {
+        const parsedWeatherCookieData = JSON.parse(weatherData);
+        if (parsedWeatherCookieData.expirationTime <= new Date().getTime()) {
+          Request.get(
+            {
+              id: parsedWeatherCookieData.city.id,
+            },
+            (data) => {
+              console.log('Update weather for current city');
+              const parsedWeatherData = JSON.parse(data);
+              this.props.dispatch(forecastActions.updateDataFromApi(parsedWeatherData));
+            },
+            (error) => {
+              console.error(error);
+            },
+          );
+        } else {
+          this.props.dispatch(forecastActions.updateDataFromCookie(parsedWeatherCookieData));
+        }
+        console.log('Weather data restored');
+      } catch (error) {
+        console.error(error);
+      }
     }
+  }
 
-    return renderArray;
+  renderWeatherCard() {
+    const { cityId } = this.props;
+    if (cityId !== -1 && cityId !== null && cityId !== undefined) {
+      return <WeatherCard />;
+    }
+    return null;
   }
 
   render() {
     return (
       <div className="page">
-        {this.renderContent()}
+        <SearchBar />
+        {this.renderWeatherCard()}
       </div>
     );
   }
 }
 
 Page.propTypes = {
-  cityId: PropTypes.number,
+  cityId: PropTypes.number.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

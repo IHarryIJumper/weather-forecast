@@ -1,8 +1,10 @@
 // import { combineReducers } from 'redux';
 
+import Cookies from 'js-cookie';
+
 const defaultState = {
   city: {
-    id: null,
+    id: -1,
     name: null,
   },
   coord: {
@@ -32,6 +34,7 @@ const defaultState = {
   clouds: {
     all: null,
   },
+  expirationTime: new Date().getTime() + 600000, // 10 minutes
 };
 
 const forecastReducer = (state = defaultState, action) => {
@@ -45,6 +48,9 @@ const forecastReducer = (state = defaultState, action) => {
       newState.visibility = Object.assign(newState.visibility, action.payload.visibility);
       newState.wind = Object.assign(newState.wind, action.payload.wind);
       newState.clouds = Object.assign(newState.clouds, action.payload.clouds);
+      newState.expirationTime = action.payload.expirationTime;
+
+      Cookies.set('weatherForecast', JSON.stringify(newState), { expires: 30 });
       break;
     default:
       break;
@@ -52,35 +58,5 @@ const forecastReducer = (state = defaultState, action) => {
 
   return newState;
 };
-
-/* const cityReducer = (state = defaultState.city, action) => {
-  let newState = Object.assign({}, state);
-  switch (action.type) {
-    case 'SET_CITY':
-      newState.id = action.payload.id;
-      newState.name = action.payload.name;
-      break;
-    default:
-      newState = state;
-      break;
-  }
-
-  return newState;
-};
-
-const coordinatesReducer = (state = defaultState.coord, action) => {
-  let newState = Object.assign({}, state);
-  switch (action.type) {
-    case 'SET_COORD':
-      newState.lon = action.payload.lon;
-      newState.lat = action.payload.lat;
-      break;
-    default:
-      newState = state;
-      break;
-  }
-
-  return newState;
-}; */
 
 export default forecastReducer;

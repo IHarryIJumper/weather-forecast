@@ -1,0 +1,125 @@
+.page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.search-bar__search-input {
+  width: 100%;
+  height: 30px;
+  padding: 0px 10px;
+  font-size: 16px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #cfd8dc;
+  border-radius: 3px;
+  margin: 5px 0px;
+}
+.search-bar__search-input:focus {
+  outline: 1px solid #cfd8dc;
+}
+.search-bar__recommended-location {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 5px 0px;
+  padding: 0px 10px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.search-bar__recommended-location-title {
+  font-weight: lighter;
+}
+.search-bar__recommended-location-link {
+  cursor: pointer;
+  font-weight: bold;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  color: #495b63;
+}
+.search-bar__recommended-location-link:hover {
+  color: #080a0b;
+}
+.search-bar__recommended-location-link_disabled {
+  cursor: default;
+  color: black;
+  pointer-events: none;
+}
+.search-bar {
+  width: 600px;
+  background: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+.search-bar_shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+@media only screen and (max-width: 640px) {
+  /* For mobile phones: */
+  .search-bar {
+    width: 100%;
+  }
+}
+.weather-card__city-info {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.weather-card__city-info .weather-card__city-name {
+  margin: 10px 0px;
+}
+.weather-card__weather-main-info {
+  position: relative;
+  width: 100%;
+  font-size: 0;
+}
+.weather-card__weather-icon,
+.weather-card__temperature {
+  display: inline-block;
+}
+.weather-card__weather-icon {
+  font-size: 50px;
+  line-height: 50px;
+  width: 50%;
+}
+.weather-card__temperature {
+  font-size: 40px;
+  line-height: 40px;
+  margin: 0;
+  width: 50%;
+}
+.weather-card {
+  width: 600px;
+  background: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 20px auto;
+  position: relative;
+}
+.weather-card_shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+@media only screen and (max-width: 640px) {
+  /* For mobile phones: */
+  .weather-card {
+    width: 100%;
+  }
+}

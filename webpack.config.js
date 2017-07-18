@@ -31,7 +31,7 @@ const webpackConfig = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.jsx', '.js'],
   },
   plugins: getPlugins(),
   externals: {},

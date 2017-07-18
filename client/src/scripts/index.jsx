@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 
 import combinedReducer from './reducers/reducers';
 
+import '../styles/main.css';
+
 import Page from './components/page/page';
 
 const store = createStore(combinedReducer);
