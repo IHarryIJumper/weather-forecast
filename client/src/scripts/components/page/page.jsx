@@ -25,7 +25,7 @@ class Page extends React.PureComponent {
               id: parsedWeatherCookieData.city.id,
             },
             (data) => {
-              console.log('Update weather for current city');
+              // console.log('Update weather for current city');
               const parsedWeatherData = JSON.parse(data);
               this.props.dispatch(forecastActions.updateDataFromApi(parsedWeatherData));
             },
@@ -36,7 +36,7 @@ class Page extends React.PureComponent {
         } else {
           this.props.dispatch(forecastActions.updateDataFromCookie(parsedWeatherCookieData));
         }
-        console.log('Weather data restored');
+        // console.log('Weather data restored');
       } catch (error) {
         console.error(error);
       }
@@ -54,8 +54,10 @@ class Page extends React.PureComponent {
   render() {
     return (
       <div className="page">
-        <SearchBar />
-        {this.renderWeatherCard()}
+        <div className="page__content">
+          <SearchBar />
+          {this.renderWeatherCard()}
+        </div>
       </div>
     );
   }

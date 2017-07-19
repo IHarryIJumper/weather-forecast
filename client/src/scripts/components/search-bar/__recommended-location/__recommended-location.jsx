@@ -13,7 +13,7 @@ class RecommendedLocation extends React.PureComponent {
     super(props);
 
     this.state = {
-      recommendedLocation: 'no',
+      recommendedLocation: 'searching...',
       recommendedLocationWeather: {},
     };
 
@@ -33,7 +33,6 @@ class RecommendedLocation extends React.PureComponent {
             lon: position.coords.longitude,
           },
           (data) => {
-            console.log(data);
             const parsedWeatherData = JSON.parse(data);
             this.setState({
               recommendedLocationWeather: parsedWeatherData,
@@ -66,7 +65,7 @@ class RecommendedLocation extends React.PureComponent {
     if (recommendedLocation !== 'no') {
       return (
         <div className="search-bar__recommended-location">
-          <span className="search-bar__recommended-location-title">Recommended location: </span>
+          <span className="search-bar__recommended-location-title">Your location: </span>
           <span
             className="search-bar__recommended-location-link"
             role="button"

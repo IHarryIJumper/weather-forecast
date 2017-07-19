@@ -21,13 +21,11 @@ class SearchInput extends React.PureComponent {
     if (event.key === 'Enter') {
       if (this.stringInput !== null) {
         if (this.stringInput.value !== '') {
-          console.log(this.stringInput.value.replace(/^\s+|\s+$/g, ''));
           Request.get(
             {
               q: this.stringInput.value.replace(/^\s+|\s+$/g, ''), // removing extra spaces
             },
             (data) => {
-              console.log(data);
               const parsedWeatherData = JSON.parse(data);
               this.props.dispatch(forecastActions.updateDataFromApi(parsedWeatherData));
               this.stringInput.value = '';
