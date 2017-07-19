@@ -35,7 +35,7 @@ const getPlugins = () => {
 
   const favicon = new FaviconsWebpackPlugin({
     logo: './client/src/images/favicon.png',
-    prefix: 'icons-[hash]/',
+    prefix: 'dist/icons-[hash]/',
     emitStats: false,
     statsFilename: 'iconstats-[hash].json',
     persistentCache: true,
