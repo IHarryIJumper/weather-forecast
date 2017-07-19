@@ -14,6 +14,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/dist', express.static(`${__dirname}/../client/dist`));
+app.use('/icons', express.static(`${__dirname}/../client/dist/icons`));
 
 app.get('/', (req, res) => {
   console.log('GET /', 'from', req.connection.remoteAddress);
