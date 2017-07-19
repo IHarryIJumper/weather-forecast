@@ -17,7 +17,7 @@ app.use('/dist', express.static(`${__dirname}/../client/dist`));
 
 app.get('/', (req, res) => {
   console.log('GET /', 'from', req.connection.remoteAddress);
-  res.sendFile(path.resolve(`${__dirname}/../client/src/index.html`));
+  res.sendFile(path.resolve(`${__dirname}/../client/dist/index.html`));
 });
 
 app.listen(process.env.PORT || 8080);

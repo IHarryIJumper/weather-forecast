@@ -2,6 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const extractCSS = new ExtractTextPlugin('stylesheets/[name]-css.css');
 const extractLESS = new ExtractTextPlugin('stylesheets/[name]-less.css');
 
@@ -14,9 +17,41 @@ const getPlugins = () => {
     },
   });
 
+  const favicon = new FaviconsWebpackPlugin({
+    logo: './client/src/images/favicon.png',
+    prefix: 'dist/icons-[hash]/',
+    emitStats: false,
+    statsFilename: 'iconstats-[hash].json',
+    persistentCache: true,
+    inject: true,
+    background: '#fff',
+    title: 'Weather Forecast',
+    icons: {
+      android: true,
+      appleIcon: true,
+      appleStartup: false,
+      coast: false,
+      favicons: true,
+      firefox: false,
+      opengraph: false,
+      twitter: false,
+      yandex: false,
+      windows: true,
+    },
+  });
+
+  const html = new HtmlWebpackPlugin({
+    inject: 'body',
+    excludeChunks: ['index'],
+    filename: 'index.html',
+    template: './client/src/index.html',
+  });
+
   plugins.push(nodeEnv);
   plugins.push(extractCSS);
   plugins.push(extractLESS);
+  plugins.push(favicon);
+  plugins.push(html);
 
   return plugins;
 };
@@ -56,10 +91,6 @@ const webpackConfig = {
         test: /\.less$/,
         // loader: 'style-loader!css-loader!less-loader',
         use: extractLESS.extract(['css-loader', 'less-loader']),
-      },
-      {
-        test: /\.json$/,
-        use: 'json-loader',
       },
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
